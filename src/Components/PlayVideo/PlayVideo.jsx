@@ -9,7 +9,7 @@ import jack from '../../assets/jack.png'
 import user_profile from '../../assets/user_profile.jpg'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { API_KEY, value_converter } from '../../data'
+import { API_KEY } from '../../data'
 import moment from 'moment'
 import { useParams } from 'react-router-dom'
 
@@ -44,6 +44,16 @@ const PlayVideo = () => {
     useEffect(() => {
         fetchOtherData();
     },[apiData])
+
+     const value_converter = (value) => {
+        if(value >= 1000000){
+          return `${(value/1000000).toFixed(1)}M`
+        }else if(value >= 1000){
+          return `${(value/1000).toFixed(1)}K`
+        }else{
+          return value
+        }
+      }
 
   return (
     <div className='play-video'>

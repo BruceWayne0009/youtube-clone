@@ -4,7 +4,6 @@ import thumbnail1 from '../../assets/thumbnail1.png'
 import { useState } from 'react'
 import { API_KEY } from '../../data'
 import { useEffect } from 'react'
-import { value_converter } from '../../data'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
@@ -22,6 +21,16 @@ const Recommended = ({categoryId}) => {
   useEffect(() => {
     fetchData();
   },[])
+
+  const value_converter = (value) => {
+    if(value >= 1000000){
+      return `${(value/1000000).toFixed(1)}M`
+    }else if(value >= 1000){
+      return `${(value/1000).toFixed(1)}K`
+    }else{
+      return value
+    }
+  }
 
 
   return (

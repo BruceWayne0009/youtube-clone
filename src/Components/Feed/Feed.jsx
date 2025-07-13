@@ -10,8 +10,17 @@ import thumbnail7 from '../../Assets/thumbnail7.png'
 import thumbnail8 from '../../Assets/thumbnail8.png'
 import { Link } from 'react-router-dom'
 import {API_KEY} from '../../data'
-import {value_converter} from '../../data'
 import moment from 'moment'
+
+const value_converter = (value) => {
+  if(value >= 1000000){
+    return `${(value/1000000).toFixed(1)}M`
+  }else if(value >= 1000){
+    return `${(value/1000).toFixed(1)}K`
+  }else{
+    return value
+  }
+}
 
 const Feed = ({category}) => {
 
